@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>OPNFV presentation</title>
+
+		<meta name="description" content="OPNFV Pharos Report(201611)">
+		<meta name="author" content="ZTE">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/theme/OPNFV.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-background="../img/title-bg.png" data-background-transition="none">
+					 <br>
+					 <h2>Evolution of ZTE Pharos Lab</h2>
+					 <br><br>
+					 <h4>ZTE</h4>
+					 <h5>2016/11</h5>
+					 <br>
+				</section>
+
+				<section data-markdown>
+				<script type="text/template">
+					# Agenda
+
+					- Background
+					- Evolution
+					- Next
+					<aside class="notes">
+					First I will talk about the undecided, evolution stage of zte pod. And at last I will talk about the next step of zte pod.
+					</aside>
+				</script>
+				</section>
+
+				<section>
+					<section data-markdown>
+					<script type="text/template">
+						## Background
+
+						- Location: Shanghai
+						- Type: Baremetal POD
+						- Role: CI
+						- Installer: Fuel@OPNFV
+						- Scenario: fuel-os-odl_l2-nofeature-ha
+						<aside class="notes">
+						Release B
+						Thanks to the community to have automatic scripts ready.
+						</aside>
+					</script>
+					</section>
+
+					<section data-markdown>
+						### Provision
+
+						* Hardware
+						* Network
+					</section>
+
+					<section data-markdown>
+						### Hardware
+
+						![img](./opnfv-meetup-seoul/provision.jpg)
+					</section>
+					<section data-markdown>
+						### Network
+
+						- Internet IP Address
+						- Remote management
+
+					</section>
+
+					<section data-markdown>
+					<script type="text/template">
+						### ZTE Pharos Lab 1.O
+
+						![img](./opnfv-meetup-seoul/zte_lab_1.bmp)
+						<aside class="notes">
+						from outside to inside
+						from inside to outside squid+iptables,forward target traffic port 21, 53, 80, etc to squid3 port;
+						</aside>
+					</script>
+					</section>
+
+					<section data-markdown>
+					<script type="text/template">
+						### Problems
+
+						- Selinux
+							* Fuel
+							* Squild
+						- Too much responsibilities on jumper server
+						- Too much time to download OPNFV ISO
+
+						<aside class="notes">
+						In fuel master template, it enable selinux.
+						SELinux denies access to Squid running on Centos 7 sometimes.
+						And currently we find that it is not necessary in Fuel template.
+						</aside>
+					</script>
+					</section>
+				</section>
+
+				<section>
+					<section data-markdown>
+						## Evolution
+					</section>
+
+					<section data-markdown>
+					<script type="text/template">
+						### Evolution 1: Issues
+
+						- Proxy
+							* Policy route & iptables
+						- More Flexible
+							* JumpServer
+							* DeployServer
+						- Very slow speed
+							* Enlarge Bandwidth
+							* http://build.opnfv.org/artifacts.opnfv.org/fuel.html
+						- Security access
+							* SSH -> OpenVPN
+						<aside class="notes">
+						policy route include ipset toolchain
+						</aside>
+					</script>
+					</section>
+
+					<section data-markdown>
+						### ZTE Pharos Lab 1.1
+
+						![img](./opnfv-meetup-seoul/zte_lab_2.bmp)
+					</section>
+`
+					<section data-markdown>
+						### Evolution 2: New PODs
+
+						- Network isloation
+							* Vlan
+						- Connect to Jenkins with one internet IP
+							* Different keys
+					</section>
+
+					<section data-markdown>
+						### ZTE Pharos Lab 2.O
+
+						![img](./opnfv-meetup-seoul/zte_lab_3.bmp)
+					</section>
+
+					<section data-markdown>
+					<script type="text/template">
+						### ZTE Pharos Lab 2.1
+
+						<img src="./opnfv-meetup-seoul/zte_lab_4.bmp" alt="img" width="800px">
+						<aside class="notes">
+						deployserver : POD = 1:1
+						</aside>
+					</script>
+					</section>
+
+				</section>
+
+				<section>
+					<section data-markdown>
+						## Next
+
+						- More Scenarios
+						- More Stable
+						- New Hardware production
+
+					</section>
+				</section>
+
+                                <section>
+                                        <h3>Thank you</h3>
+                                        <img width="1000" data-src="./opnfv-meetup-seoul/shanghai-8.jpg" alt="tests">
+                                </section>
+
+			</div>
+			<div class='footer'>
+				 <img src="../img/logo-OPNFV.png" alt="OPNFV logo">
+			</div>
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true },
+					{ src: '../plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

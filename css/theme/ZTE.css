@@ -1,0 +1,7 @@
+@import url(white.css);
+
+div.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
